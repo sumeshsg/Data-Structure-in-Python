@@ -25,7 +25,7 @@ class LinkedList(object):
 
     def display(self):
         current_node = self.head
-        while (current_node):
+        while current_node:
             print(current_node.data)
             current_node = current_node.next_node
 
@@ -39,14 +39,15 @@ class LinkedList(object):
                 if position == cnt:
                     current_node.next_node = current_node.next_node.next_node
                     break
-                current_node=current_node.next_node
+                current_node = current_node.next_node
                 cnt += 1
 
-
-linked_list = LinkedList(Node(1))
-linked_list.append(2)
-linked_list.append(3)
-linked_list.append(4)
-linked_list.append(5)
-linked_list.delete(3)
-linked_list.display()
+    def reverse(self):
+        previous_node = None
+        current_node = self.head
+        while current_node:
+            next_node = current_node.next
+            current_node.next = previous_node
+            previous_node = current_node
+            current_node = next_node
+        self.head = previous_node
